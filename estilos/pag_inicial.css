@@ -15,30 +15,33 @@ body {
 .cabecalho {
     background-color: #000; /* Barra de navegação preta */
     color: #fff;
-    padding: 10px 20px;
+    padding: 0.625em 1.25em; /* 10px 20px */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo img {
-    height: 100px; /* Ajuste conforme necessário */
+    height: 6.25em; /* 100px */
 }
 
 .navegacao {
-    width: 100%;
+    margin-right: 1.25em;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 1.25em; /* Aproxima o menu de navegação do logo */
 }
 
 .navegacao ul {
     list-style: none;
     display: flex;
+    margin-right: 50em;
 }
 
 .navegacao li {
-    margin: 0 10px;
+    margin: 0 0.625em; /* 10px */
 }
 
 .navegacao a {
@@ -51,62 +54,106 @@ body {
     text-decoration: underline;
 }
 
+/* Botão de Sair e Nome do Usuário */
+.user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8em; /* Distância da borda direita */
+}
+
+.btn-sair {
+    background-color: #b2ff59; /* Verde claro */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.625em; /* 10px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-sair:hover {
+    background-color: #9dff57; /* Verde um pouco mais escuro */
+}
+
 /* Banner */
 .banner {
     width: 100%;
-    height: 400px; /* Ajuste a altura conforme necessário */
+    height: 25em; /* 400px */
     object-fit: cover;
-    margin-bottom: 20px;
+    margin-bottom: 1.25em; /* 20px */
 }
 
 /* Principal */
 main {
-    padding: 20px;
+    padding: 1.25em; /* 20px */
     display: flex;
     justify-content: center;
 }
 
+.titulo {
+    text-align: center;
+    margin-bottom: 1.25em; /* 20px */
+    font-size: 2em;
+}
+
+.texto-principal {
+    text-align: justify;
+    margin-bottom: 2.5em; /* 40px */
+    font-size: 1.125em;
+    line-height: 1.5;
+}
+
+.texto-secundario {
+    text-align: justify;
+    margin-bottom: 2.5em; /* 40px */
+    font-size: 1.125em;
+    line-height: 1.5;
+}
+
 /* Carrossel */
 .carousel-container {
-    margin: 20px auto;
-    padding: 20px;
-    border: 4px solid #4CAF50; /* Bordas largas na cor verde claro */
-    border-radius: 10px;
+    margin: 1.25em auto; /* 20px */
+    padding: 1.25em; /* 20px */
+    border: 0.25em solid #000000; /* 4px */
+    border-radius: 0.625em; /* 10px */
     max-width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
     background-color: #f0f0f0; /* Fundo do container em cinza claro */
-    position: relative; /* Necessário para posicionar as setas */
+    position: relative;
 }
 
 .carousel-item {
-    display: none;
-}
-
-.carousel-item:first-child {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em; /* Espaço entre imagem e texto */
 }
 
 .carousel-title {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em; /* 10px */
     color: #333;
 }
 
 .carousel-text {
     font-size: 1.2em;
-    margin-bottom: 20px;
+    margin-bottom: 1.25em; /* 20px */
     color: #666;
     background-color: #e0e0e0; /* Cinza claro para o fundo do campo de texto */
-    padding: 10px;
-    border-radius: 5px;
+    padding: 0.625em; /* 10px */
+    border-radius: 0.3125em; /* 5px */
     text-align: justify;
+    flex: 1;
 }
 
 .carousel img {
-    width: 100%;
-    height: 400px; /* Limita o tamanho da imagem */
+    width: 50%;
+    height: 30em;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0.625em; /* 10px */
 }
 
 /* Setas de navegação */
@@ -118,108 +165,102 @@ main {
     background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 0.625em; /* 10px */
     font-size: 1.5em;
     border-radius: 50%;
+    z-index: 10;
 }
 
 .prev {
-    left: 10px;
+    left: 0.625em; /* 10px */
 }
 
 .next {
-    right: 10px;
+    right: 0.625em; /* 10px */
 }
 
 .carousel-nav:hover {
     background-color: rgba(0, 0, 0, 0.7); /* Fundo um pouco mais escuro ao passar o mouse */
 }
 
-
+/* Container */
 .container {
     text-align: center;
     margin: 0 auto;
-    max-width: 1000px;
-    padding: 0 20px;
-}
-
-.titulo {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.texto-principal,
-.texto-secundario {
-    text-align: justify;
-    margin-bottom: 20px;
+    max-width: 62.5em; /* 1000px */
+    padding: 0 1.25em; /* 20px */
 }
 
 /* Imagens */
 .imagens-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-top: 2.5em; /* 40px */
+    margin-bottom: 1.25em; /* 20px */
 }
 
 .imagem-item {
     flex: 1;
-    margin: 0 10px;
+    margin: 0 0.625em; /* 10px */
 }
 
 .imagem-item img {
     width: 100%;
-    height: 200px; /* Tamanho fixo para as imagens */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    height: 35em; 
+    object-fit: cover;
 }
 
 .texto-imagem {
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 0.3125em; /* 5px */
 }
 
+/* Botão de Informações Adicionais */
 .btn-toggle-info {
-    background-color: #4CAF50; /* Verde claro */
-    color: #fff;
+    background-color: #b2ff59; /* Verde claro */
+    color: #000000;
+    font-weight: bold;
     border: none;
-    padding: 10px 20px;
+    border-radius: 1em;
+    padding: 0.625em 1.25em; /* 10px 20px */
     font-size: 1em;
     cursor: pointer;
 }
 
 .btn-toggle-info:hover {
-    background-color: #45a049; /* Verde um pouco mais escuro */
+    background-color: #b2ff59; /* Verde um pouco mais escuro */
 }
 
 /* Aside */
 .informacoes-adicionais {
     background-color: #f1f1f1;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 0.9375em; /* 15px */
+    border-radius: 0.3125em; /* 5px */
     display: none; /* Inicialmente escondido */
     text-align: justify;
 }
 
 .titulo-aside {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em; /* 10px */
 }
 
 /* Rodapé */
 .footer {
-    background-color: #4CAF50; /* Verde claro */
+    background-color: #1f3702; /* Verde claro */
     color: #fff;
-    padding: 20px;
+    padding: 1.25em; /* 20px */
     text-align: center;
 }
 
 .links-footer {
-    margin-bottom: 10px;
+    margin-bottom: 0.625em; /* 10px */
 }
 
 .link-footer {
     color: #fff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 0.625em; /* 10px */
 }
 
 .link-footer:hover {
@@ -227,10 +268,41 @@ main {
 }
 
 .store-icons {
-    margin-bottom: 10px;
+    margin-bottom: 0.625em; /* 10px */
 }
 
 .icone-store {
-    height: 30px; /* Ajuste conforme necessário */
-    margin: 0 5px;
+    height: 1.875em; /* 30px */
+    margin: 0 0.3125em; /* 5px */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navegacao ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-info {
+        position: static;
+        margin-top: 1em;
+    }
+
+    .banner {
+        height: 18.75em; /* 300px */
+    }
+
+    .imagens-container {
+        flex-direction: column;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: auto;
+    }
 }
