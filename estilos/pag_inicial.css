@@ -1,0 +1,236 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'BlinkMacSystemFont, Roboto, sans-serif';
+    color: #333;
+    background-color: #fff;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #000; /* Barra de navegação preta */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px; /* Ajuste conforme necessário */
+}
+
+.navegacao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+}
+
+.navegacao li {
+    margin: 0 10px;
+}
+
+.navegacao a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+/* Banner */
+.banner {
+    width: 100%;
+    height: 400px; /* Ajuste a altura conforme necessário */
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Principal */
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Carrossel */
+.carousel-container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 4px solid #4CAF50; /* Bordas largas na cor verde claro */
+    border-radius: 10px;
+    max-width: 100%;
+    text-align: center;
+    background-color: #f0f0f0; /* Fundo do container em cinza claro */
+    position: relative; /* Necessário para posicionar as setas */
+}
+
+.carousel-item {
+    display: none;
+}
+
+.carousel-item:first-child {
+    display: block;
+}
+
+.carousel-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.carousel-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #666;
+    background-color: #e0e0e0; /* Cinza claro para o fundo do campo de texto */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: justify;
+}
+
+.carousel img {
+    width: 100%;
+    height: 400px; /* Limita o tamanho da imagem */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Setas de navegação */
+.carousel-nav {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.5em;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carousel-nav:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo um pouco mais escuro ao passar o mouse */
+}
+
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.titulo {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.texto-principal,
+.texto-secundario {
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Imagens */
+.imagens-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.imagem-item {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.imagem-item img {
+    width: 100%;
+    height: 200px; /* Tamanho fixo para as imagens */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+.texto-imagem {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.btn-toggle-info {
+    background-color: #4CAF50; /* Verde claro */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-toggle-info:hover {
+    background-color: #45a049; /* Verde um pouco mais escuro */
+}
+
+/* Aside */
+.informacoes-adicionais {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+    display: none; /* Inicialmente escondido */
+    text-align: justify;
+}
+
+.titulo-aside {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #4CAF50; /* Verde claro */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.links-footer {
+    margin-bottom: 10px;
+}
+
+.link-footer {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+}
+
+.store-icons {
+    margin-bottom: 10px;
+}
+
+.icone-store {
+    height: 30px; /* Ajuste conforme necessário */
+    margin: 0 5px;
+}
