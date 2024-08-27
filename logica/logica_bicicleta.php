@@ -1,31 +1,25 @@
 <?php
-    require_once('atividades.php');
-    require_once('atividadesDAO.php');
+    require_once('bicicleta.php');
+    require_once('bicicletaDAO.php');
     
     if (isset($_POST['cadastrar'])) {
         // Validação e sanitização dos dados de entrada
-        $titulo = filter_var(trim($_POST['titulo']), FILTER_SANITIZE_STRING);
-        $local = filter_var(trim($_POST['local']), FILTER_SANITIZE_STRING);
-        $distancia = filter_var(trim($_POST['distancia']), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        $tempo = filter_var(trim($_POST['tempo']), FILTER_SANITIZE_NUMBER_INT);
-        $data = $_POST['data'];  // Se for uma data válida, sem sanitização por enquanto
-        $descricao = filter_var(trim($_POST['descricao']), FILTER_SANITIZE_STRING);
-    
-        // Criação do objeto Atividades
-        $atividades = new Atividades();
-        $atividades->settitulo($titulo);
-        $atividades->setlocal($local);
-        $atividades->setdistancia($distancia);
-        $atividades->settempo($tempo);
-        $atividades->setdata($data);
-        $atividades->setdescricao($descricao);
+        $marca = filter_var(trim($_POST['marca']), FILTER_SANITIZE_STRING);
+        $modelo = filter_var(trim($_POST['modelo']), FILTER_SANITIZE_STRING);
+        $aro = filter_var(trim($_POST['aro']), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+       
+        // Criação do objeto Bicicleta
+        $bicicleta = new Bicicleta();
+        $bicicleta->setmarca($marca);
+        $bicicleta->setmodelo($modelo);
+        $bicicleta->setaro($aro);
     
         // Inserção da atividade no banco de dados
-        $atividadesDAO = new AtividadesDAO();
-        $retorno = $atividadesDAO->inserirAtividades($atividades);
+        $bicicletaDAO = new BicicletaDAO();
+        $retorno = $bicicletaDAO->inserirBicicleta($bicicleta);
     
         if ($retorno) {
-            header('Location: ../indexAtividades.php');
+            header('Location: ../listagemBicicleta.php');
             exit;
         } else {
             echo "Erro ao cadastrar atividade.";
@@ -33,91 +27,75 @@
     }
 
 
-#EDITAR Atividades
+#EDITAR Bicicleta
     if(isset($_POST['editar'])){
     
-                $codAtividades = $_POST['editar'];
+                $codBicicleta = $_POST['editar'];
 
-                $atividades=new Atividades();
+                $bicicleta=new Bicicleta();
 
-                $atividades->setcodAtividades($codAtividades);
+                $bicicleta->setcodBicicleta($codBicicleta);
 
-                $atividadesDAO= new AtividadesDAO();
+                $bicicletaDAO= new BicicletaDAO();
 
-                $retorno=$atividadesDAO->buscarAtividades($atividades);
+                $retorno=$bicicletaDAO->buscarBicicleta($bicicleta);
 
                 require_once('../editarPerfil.php');
     }    
 
-#ALTERAR Atividades
+#ALTERAR Bicicleta
     if(isset($_POST['editar'])){
     
-            $codAtividades = $_POST['codAtividades'];
-            $titulo = $_POST['titulo'];
-            $local = $_POST['local'];
-            $distancia = $_POST['distancia'];
-            $tempo = $_POST['tempo'];
-            $data = $_POST['data'];    
-            $descricao = $_POST['descricao'];
+            $codBicicleta = $_POST['codBicicleta'];
+            $marca = $_POST['marca'];
+            $modelo = $_POST['modelo'];
+            $aro = $_POST['aro'];
 
-            $atividades=new Atividades();
-            $atividades->settitulo($titulo);
-            $atividades->setlocal($local);
-            $atividades->setdistancia($distancia);
-            $atividades->settempo($tempo);
-            $atividades->setdata($data);
-            $atividades->setdescricao($descricao);
-            $atividades->setcodAtividades($codAtividades);
+            $bicicleta=new Bicicleta();
+            $bicicleta->setmarca($marca);
+            $bicicleta->setmodelo($modelo);
+            $bicicleta->setaro($aro);
 
-            $atividadesDAO= new AtividadesDAO();
+            $bicicletaDAO= new BicicletaDAO();
 
-
-
-            $retorno=$atividadesDAO->alterarAtividades($atividades);
+            $retorno=$bicicletaDAO->alterarBicicleta($bicicleta);
 
             header('location:../pag_inicial.php');
     }
-#DELETAR Atividades
+#DELETAR Bicicleta
     if(isset($_POST['deletar'])){
-        $codAtividades = $_POST['deletar'];
+        $codBicicleta = $_POST['deletar'];
 
-                $atividades=new Atividades();
+                $bicicleta=new Bicicleta();
 
-                $atividades->setcodAtividades($codAtividades);
+                $bicicleta->setcodBicicleta($codBicicleta);
 
-                $atividadesDAO= new AtividadesDAO();
+                $bicicletaDAO= new BicicletaDAO();
 
-                $retorno=$atividadesDAO->deletarAtividades($atividades);
+                $retorno=$bicicletaDAO->deletarBicicleta($bicicleta);
        
 
-        header('Location:../indexAtividades.php');
+        header('Location:../indexBicicleta.php');
     }
 
 #ALTERAR PERFIL
-    if(isset($_POST['alterarAtividades'])){
+    if(isset($_POST['alterarBicicleta'])){
  
             session_start();
 
-            $codAtividades = $_POST['codAtividades'];
-            $titulo = $_POST['titulo'];
-            $local = $_POST['local'];
-            $distancia = $_POST['distancia'];
-            $tempo = $_POST['tempo'];
-            $data = $_POST['data'];
-            $descricao = $_POST['descricao'];    
+            $codBicicleta = $_POST['codBicicleta'];
+            $marca = $_POST['marca'];
+            $modelo = $_POST['modelo'];
+            $aro = $_POST['aro'];
+        
+            $bicicleta=new Bicicleta();
+            $bicicleta->setmarca($marca);
+            $bicicleta->setmodelo($modelo);
+            $bicicleta->setaro($aro);
 
-            $atividades=new Atividades();
-            $atividades->settitulo($titulo);
-            $atividades->setlocal($local);
-            $atividades->setdistancia($distancia);
-            $atividades->settempo($tempo);
-            $atividades->setdata($data);
-            $atividades->setdescricao($descricao);
-            $atividades->setcodAtividades($codAtividades);
+            $bicicletaDAO= new BicicletaDAO();
 
-            $atividadesDAO= new AtividadesDAO();
-
-            $retorno=$atividadesDAO->alterarAtividades($atividades);
+            $retorno=$bicicletaDAO->alterarBicicleta($bicicleta);
 
             $_SESSION['nome'] = $nome;
             echo $_SESSION['nome'];

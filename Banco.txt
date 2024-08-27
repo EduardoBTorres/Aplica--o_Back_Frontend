@@ -1,0 +1,39 @@
+-- Criação do banco de dados
+CREATE DATABASE projeto_backend;
+USE projeto_backend;
+
+-- Criação da tabela 'usuario'
+CREATE TABLE usuario (
+    codUsuario INT AUTO_INCREMENT PRIMARY KEY, 
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    cpf VARCHAR(13),
+    senha VARCHAR(50),
+    imagem BLOB,
+    data_cadastro DATE
+);
+
+-- Criação da tabela 'bicicleta'
+CREATE TABLE bicicleta (
+    codBicicleta INT AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(20),
+    modelo VARCHAR(20),
+    aro INT,
+    codUsuario INT,
+    FOREIGN KEY (codUsuario) REFERENCES usuario(codUsuario)
+);
+
+-- Criação da tabela 'atividades'
+CREATE TABLE atividades (
+    codAtividades INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(20),
+    local VARCHAR(20),
+    distancia FLOAT, 
+    tempo FLOAT,
+    data DATE,
+    descricao VARCHAR(100),
+    codUsuario INT,
+    codBicicleta INT,
+    FOREIGN KEY (codUsuario) REFERENCES usuario(codUsuario),
+    FOREIGN KEY (codBicicleta) REFERENCES bicicleta(codBicicleta)
+);

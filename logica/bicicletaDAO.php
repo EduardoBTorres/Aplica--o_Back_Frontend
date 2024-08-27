@@ -28,7 +28,7 @@
 
     function alterarBicicleta($bicicleta){
         try {
-            $query = $this->conexao->prepare("UPDATE bicicleta set marca= :marca, modelo = :modelo, aro= :aro, senha= :senha where codBicicleta = :codBicicleta");
+            $query = $this->conexao->prepare("UPDATE bicicleta set marca= :marca, modelo = :modelo, aro= :aro where codBicicleta = :codBicicleta");
             $resultado = $query->execute(['marca' => $bicicleta->getmarca(),'modelo' => $bicicleta->getmodelo(),'aro' => $bicicleta->getaro(),'codBicicleta' => $bicicleta->getcodBicicleta()]);   
             return $resultado;
         }catch(PDOException $e) {
@@ -84,5 +84,16 @@
             echo 'Error: ' . $e->getMessage();
       }  
     }
+    function listarBicicleta() {
+        try {
+            $query = $this->conexao->prepare("SELECT * FROM bicicleta");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return false;
+        }
+    }
+
    }
    ?>
