@@ -1,5 +1,5 @@
 <?php
-   Class Bicicletas{
+   Class Bicicleta{
        private $codBicicleta;
        private $marca;
        private $modelo;
