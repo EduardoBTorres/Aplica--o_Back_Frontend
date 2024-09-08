@@ -13,7 +13,7 @@ class Bicicleta
         $this->codBicicleta = $codBicicleta;
     }
 
-    public function getCodBicicleta(): int {
+    public function getCodBicicleta() {
         return $this->codBicicleta;
     }
 
@@ -34,9 +34,6 @@ class Bicicleta
     }
 
     public function setAro($aro) {
-        if ($aro <= 0) {
-            throw new InvalidArgumentException('O aro deve ser um número positivo.');
-        }
         $this->aro = $aro;
     }
 
@@ -56,7 +53,7 @@ class Bicicleta
         $this->codUsuario = $codUsuario;
     }
 
-    public function getCodUsuario(): int {
+    public function getCodUsuario() {
         return $this->codUsuario;
     }
 }

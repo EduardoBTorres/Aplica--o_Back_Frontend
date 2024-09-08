@@ -14,8 +14,8 @@ body {
 
 /* Container centralizado */
 .container {
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto transparente */
-    border: 0.2em solid #b2ff59; /* Borda verde claro */
+    background-color: rgba(0, 0, 0, 0.7); 
+    border: 0.2em solid #b2ff59; 
     border-radius: 1em;
     padding: 2em;
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
@@ -39,7 +39,7 @@ body {
 
 /* Estilização do título */
 .titulo {
-    color: #b2ff59; /* Verde claro */
+    color: #b2ff59; 
     margin-bottom: 1em;
     font-size: 2em;
 }
@@ -53,7 +53,7 @@ body {
 /* Estilização dos rótulos */
 .label {
     margin: 0.5em 0 0.2em;
-    color: #b2ff59; /* Verde claro */
+    color: #b2ff59; 
     text-align: left;
 }
 
@@ -69,7 +69,7 @@ body {
 
 /* Estilização do botão de envio */
 .botao-submit {
-    background-color: #66bb6a; /* Verde médio */
+    background-color: #66bb6a; 
     color: #ffffff;
     border: none;
     padding: 1em 2em;
@@ -80,7 +80,7 @@ body {
 }
 
 .botao-submit:hover {
-    background-color: #43a047; /* Verde mais escuro no hover */
+    background-color: #43a047; 
 }
 
 /* Estilização do link de cadastro */

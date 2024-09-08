@@ -24,20 +24,20 @@ class BicicletaDAO {
         return $stmt->execute();
     }
 
-    public function buscarBicicletaPorId($id) {
-        $sql = "SELECT * FROM bicicletas WHERE cod_bicicleta = :id";
+    public function buscarBicicletaPorId($codUsuario) {
+        $sql = "SELECT * FROM bicicleta WHERE codBicicleta = :id";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':codUsuario', $codUsuario, PDO::FETCH_ASSOC);
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($data) {
             $bicicleta = new Bicicleta();
-            $bicicleta->setCodBicicleta($data['cod_bicicleta']);
+            $bicicleta->setCodBicicleta($data['codBicicleta']);
             $bicicleta->setMarca($data['marca']);
             $bicicleta->setModelo($data['modelo']);
             $bicicleta->setAro($data['aro']);
             $bicicleta->setCor($data['cor']);
-            $bicicleta->setCodUsuario($data['cod_usuario']);
+            $bicicleta->setCodUsuario($data['codUsuario']);
             return $bicicleta;
         }
         return null;
@@ -67,7 +67,7 @@ class BicicletaDAO {
 public function buscarBicicletaPorUsuario($codUsuario) {
     $sql = "SELECT * FROM bicicleta WHERE codUsuario = :codUsuario";
     $stmt = $this->conexao->prepare($sql);
-    $stmt->bindParam(':codUsuario', $codUsuario, PDO::PARAM_INT);
+    $stmt->bindParam(':codUsuario', $codUsuario, PDO::FETCH_ASSOC);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC); 
     return $data;

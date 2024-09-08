@@ -1,14 +1,14 @@
 <?php
 session_start();
- require_once('logica/Usuario.php');
- require_once('logica/UsuarioDAO.php'); 
+ require_once('logica/Bicicleta.php');
+ require_once('logica/BicicletaDAO.php'); 
 
- $codUsuario = $_SESSION['codUsuario'];
+ $codBicicleta = $_SESSION['codUsuario'];
 
- $usuario=new Usuario();
- $usuario->setcodUsuario($codUsuario);
- $usuariosDAO = new UsuarioDAO();
- $retorno = $usuariosDAO->buscarUsuario($usuario);
+ $bicicleta=new Bicicleta();
+ $bicicleta->setcodBicicleta($codBicicleta);
+ $bicicletasDAO = new BicicletaDAO();
+ $retorno = $bicicletasDAO->buscarBicicletaPorUsuario($bicicleta);
 
 ?>
 <!DOCTYPE html>
@@ -36,8 +36,9 @@ session_start();
                 <li><a href="indexAtividades.php">Atividades</a></li>
                 <li><a href="listagemBicicleta.php">Bicicletas</a></li>
                 <li><a href="rotas.php">Rotas</a></li>
+                <li><a href="editarPerfil.php">Editar Perfil</a></li>
             </ul>
-            <form action="logica/logica_usuario.php" method="post">
+            <form action="logica/logica_bicicleta.php" method="post">
                 <input type="submit" class="btn-sair" name="sair" value="Sair">
             </form>
             <div class="user-info">
@@ -48,23 +49,22 @@ session_start();
 
     <main>
         <section class="container-form">
-            <h3>Editar Perfil</h3>
-            <form action="logica/logica_usuario.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
-                <p><label for="nome">Nome: </label><input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($retorno['nome']); ?>"></p>
-                <p><label for="email">Email: </label><input type="email" name="email" id="email" value="<?php echo htmlspecialchars($retorno['email']); ?>"></p>
-                <p><label for="cpf">CPF: </label><input type="text" name="cpf" id="cpf" value="<?php echo htmlspecialchars($retorno['cpf']); ?>"></p>
-                <p><label for="senha">Senha: </label><input type="password" name="senha" id="senha" value="<?php echo htmlspecialchars($retorno['senha']); ?>"></p>
-                <p><label for="imagem">Imagem:</label><input type="file" name="imagem" id="imagem"></p>
-                <input type="hidden" id='codUsuario' name='codUsuario' value="<?php echo htmlspecialchars($retorno['codUsuario']); ?>">
+            <h3>Editar Bicicleta</h3>
+            <form action="logica/logica_bicicleta.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+                <p><label for="marca">Marca: </label><input type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($retorno['marca']); ?>"></p>
+                <p><label for="modelo">Modelo: </label><input type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($retorno['modelo']); ?>"></p>
+                <p><label for="aro">Aro: </label><input type="text" name="aro" id="aro" value="<?php echo htmlspecialchars($retorno['aro']); ?>"></p>
+                <p><label for="cor">Cor: </label><input type="text" name="cor" id="cor" value="<?php echo htmlspecialchars($retorno['cor']); ?>"></p>
+                <input type="hidden" id='codBicicleta' name='codBicicleta' value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">
                 <p><input type="submit" id='editar' name='editar' value="Editar"></p>
             </form>
         </section>
 
         <section class="container-form">
-            <h3>Excluir Conta</h3>
-            <form action="logica/logica_usuario.php" method="post" onsubmit="return confirma_excluir()">
-                <input type="hidden" id="codUsuario" name="codUsuario" value="<?php echo htmlspecialchars($retorno['codUsuario']); ?>">
-                <button id="botaoExcluir"  type="submit" name="deletar" value="<?php echo htmlspecialchars($retorno['codUsuario']); ?>">Deletar</button>
+            <h3>Excluir Bicicleta</h3>
+            <form action="logica/logica_bicicleta.php" method="post" onsubmit="return confirma_excluir()">
+                <input type="hidden" id="codBicicleta" name="codBicicleta" value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">
+                <button id="botaoExcluir"  type="submit" name="deletar" value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">Deletar</button>
             </form>
         </section>
     </main>

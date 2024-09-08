@@ -47,51 +47,56 @@ if(isset($_POST['editar'])){
 
     $atividadesDAO= new AtividadesDAO();
 
-    $retorno=$atividadesDAO->buscarAtividades($atividades);
+    $retorno=$atividadesDAO->buscarAtividadePorId($atividades);
 
     require_once('../indexAtividades.php');
 }  
 
-#ALTERAR Atividades
-if(isset($_POST['editar'])){
-    
+if (isset($_POST['editar'])) {
     $codAtividades = $_POST['codAtividades'];
     $titulo = $_POST['titulo'];
     $local = $_POST['local'];
     $distancia = $_POST['distancia'];
-    $tempo = $_POST['tempo'];  
+    $tempo = $_POST['tempo'];
     $data = $_POST['data'];
-    $descricao = $_POST['descricao'];  
+    $descricao = $_POST['descricao'];
 
-    $atividades=new Atividades();
-    $atividades->settitulo($titulo);
-    $atividades->setlocal($local);
-    $atividades->setdistancia($distancia);
-    $atividades->settempo($tempo);
+    $atividades = new Atividades();
+    $atividades->setCodAtividades($codAtividades);
+    $atividades->setTitulo($titulo);
+    $atividades->setLocal($local);
+    $atividades->setDistancia($distancia);
+    $atividades->setTempo($tempo);
     $atividades->setData($data);
     $atividades->setDescricao($descricao);
-    $atividades->setcodAtividades($codAtividades);
 
-    $atividadesDAO= new AtividadesDAO();
-
-
-
-    $retorno=$atividadesDAO->alterarAtividades($atividades);
-
-    header('location:../indexAtividades.php');
+    $atividadesDAO = new AtividadesDAO();
+    if ($atividadesDAO->alterarAtividades($atividades)) {
+        echo "<script>alert('Atividade alterada com sucesso');</script>";
+        header("Location: ../indexAtividades.php");
+        exit();
+    } else {
+        echo "<script>alert('Erro ao alterar atividade');</script>";
+    }
 }
+
 
 # DELETAR ATIVIDADES
 if (isset($_POST['deletar'])) {
-    $codAtividades = $_SESSION['codAtividades'];
+    $codAtividades = $_POST['codAtividades'];
+
+    $atividades = new Atividades();
+    $atividades->setCodAtividades($codAtividades);
 
     $atividadesDAO = new AtividadesDAO();
-    if ($atividadesDAO->deletarAtividades($codAtividades)) {
-        header("Location: ../index.php");
-        exit;
+    if ($atividadesDAO->deletarAtividades($atividades)) {
+        echo "<script>alert('Atividade deletada com sucesso');</script>";
+        header("Location: ../indexAtividades.php");
+        exit();
     } else {
-        echo "<script>alert('Erro ao deletar conta');</script>";
+        echo "<script>alert('Erro ao deletar atividade');</script>";
     }
 }
+
 
 ?>
