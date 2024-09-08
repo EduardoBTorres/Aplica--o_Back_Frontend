@@ -1,0 +1,172 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    margin: 0;
+    background-image: url('../imagens/cadAtividades.jpg');
+    background-size: cover;
+    background-position: left;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #000; /* Barra de navegação preta */
+    color: #fff;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo img {
+    height: 6.25em; /* 100px */
+}
+
+.navegacao {
+    margin-right: 1.25em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1.25em; /* Aproxima o menu de navegação do logo */
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+    margin-right: 45em;
+}
+
+.navegacao li {
+    margin: 0 0.625em; /* 10px */
+}
+
+.navegacao a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+/* Botão de Sair e Nome do Usuário */
+.user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8em; /* Distância da borda direita */
+}
+
+.btn-sair {
+    background-color: #b2ff59; /* Verde claro */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.625em; /* 10px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-sair:hover {
+    background-color: #9dff57; /* Verde um pouco mais escuro */
+}
+
+/* Estilização da seção de conteúdo */
+.conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2em;
+}
+
+.imagem-banner {
+    background-image: url('../imagens/cadAtividades.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 40em; /* Ajuste a altura conforme necessário */
+    border-radius: 1em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+}
+
+/* Container do formulário */
+.container-form {
+    background-color: #1e1e1e; /* Fundo preto */
+    border: 0.2em solid #b2ff59; /* Borda verde claro */
+    border-radius: 1em;
+    padding: 2em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
+    width: 45%; /* Ajuste a largura conforme necessário */
+}
+
+.container-form h3 {
+    color: #b2ff59; /* Verde claro */
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.container-form p {
+    margin-bottom: 1.5em;
+}
+
+.container-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #b2ff59; /* Verde claro */
+}
+
+.container-form input[type="text"],
+.container-form input[type="number"],
+.container-form input[type="date"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 0.1em solid #ccc;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #fff;
+    background-color: #333; /* Fundo cinza escuro */
+}
+
+.container-form input[type="submit"],
+.container-form button {
+    background-color: #b2ff59;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.8em 1.5em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.container-form input[type="submit"]:hover,
+.container-form button:hover {
+    background-color: #9dff57;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagem-banner,
+    .container-form {
+        width: 90%;
+        margin-bottom: 1.5em;
+    }
+}

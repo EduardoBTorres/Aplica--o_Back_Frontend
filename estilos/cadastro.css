@@ -24,10 +24,12 @@ body {
     background-color: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
     border: 0.2em solid #b2ff59; /* Borda verde claro */
     border-radius: 1em;
+    margin-bottom: 8em;
+    margin-top: 3em;
     padding: 2em;
     box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 30em; /* Largura maior para o container */
+    max-width: 40em; /* Largura maior para o container */
     text-align: center;
     position: relative;
     z-index: 1; /* Para garantir que o container fique sobre a imagem de fundo */
@@ -106,6 +108,7 @@ body {
 /* Estilização do link de login */
 .login {
     margin-top: 1.5em;
+    color: #a4d3a1;
 }
 
 .botao-login {

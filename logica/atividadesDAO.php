@@ -4,7 +4,7 @@ class AtividadesDAO {
 
     public function __construct() {
         try {
-            $this->conexao = new PDO("mysql:host=localhost; dbname=projeto_backend; charset=utf8", "root", "");
+            $this->conexao = new PDO("mysql:host=localhost; dbname=biketracker; charset=utf8", "root", "");
             $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -14,17 +14,19 @@ class AtividadesDAO {
     function inserirAtividades($atividades) {
         try {
             $query = $this->conexao->prepare("
-                INSERT INTO atividades (titulo, local, distancia, tempo, data, descricao) 
-                VALUES (:titulo, :local, :distancia, :tempo, :data, :descricao)
+                INSERT INTO atividades (titulo, local, distancia, tempo, data, descricao, codUsuario, codBicicleta) 
+                VALUES (:titulo, :local, :distancia, :tempo, :data, :descricao, :codUsuario, :codBicicleta);
             ");
 
             $resultado = $query->execute([
-                'titulo' => $atividades->gettitulo(),
-                'local' => $atividades->getlocal(),
-                'distancia' => $atividades->getdistancia(),
-                'tempo' => $atividades->gettempo(),
-                'data' => $atividades->getdata(),
-                'descricao' => $atividades->getdescricao()
+                'titulo' => $atividades->getTitulo(),
+                'local' => $atividades->getLocal(),
+                'distancia' => $atividades->getDistancia(),
+                'tempo' => $atividades->getTempo(),
+                'data' => $atividades->getData(),
+                'descricao' => $atividades->getDescricao(),
+                'codUsuario' => $atividades->getCodUsuario(),
+                'codBicicleta' => $atividades->getCodBicicleta()
             ]);
 
             return $resultado;
@@ -34,21 +36,24 @@ class AtividadesDAO {
         }
     }
 
+    
+
     function alterarAtividades($atividades) {
         try {
             $query = $this->conexao->prepare("
                 UPDATE atividades 
-                SET titulo = :titulo, local = :local, distancia = :distancia, tempo = :tempo, descricao = :descricao 
+                SET titulo = :titulo, local = :local, distancia = :distancia, tempo = :tempo, descricao = :descricao, data = :data
                 WHERE codAtividades = :codAtividades
             ");
 
             $resultado = $query->execute([
-                'titulo' => $atividades->gettitulo(),
-                'local' => $atividades->getlocal(),
-                'distancia' => $atividades->getdistancia(),
-                'tempo' => $atividades->gettempo(),
-                'descricao' => $atividades->getdescricao(),
-                'codAtividades' => $atividades->getcodAtividades()
+                'titulo' => $atividades->getTitulo(),
+                'local' => $atividades->getLocal(),
+                'distancia' => $atividades->getDistancia(),
+                'tempo' => $atividades->getTempo(),
+                'descricao' => $atividades->getDescricao(),
+                'data' => $atividades->getData(),
+                'codAtividades' => $atividades->getCodAtividades()
             ]);
 
             return $resultado;
@@ -65,7 +70,7 @@ class AtividadesDAO {
                 WHERE codAtividades = :codAtividades
             ");
 
-            $resultado = $query->execute(['codAtividades' => $atividades->getcodAtividades()]);
+            $resultado = $query->execute(['codAtividades' => $atividades->getCodAtividades()]);
             return $resultado;
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -73,52 +78,30 @@ class AtividadesDAO {
         }
     }
 
-    function buscarAtividades($atividades) {
+    function buscarAtividades($codAtividades) {
         try {
             $query = $this->conexao->prepare("
                 SELECT * FROM atividades 
                 WHERE codAtividades = :codAtividades
             ");
 
-            if ($query->execute(['codAtividades' => $atividades->getcodAtividades()])) {
-                return $query->fetch();
-            } else {
-                return false;
-            }
+            $query->execute(['codAtividades' => $codAtividades]);
+            return $query->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return false;
         }
     }
 
-    function acessarAtividades($atividades) {
+    function listarAtividades($codUsuario) {
         try {
-            $query = $this->conexao->prepare("
-                SELECT * FROM atividades 
-                WHERE local = :local AND tempo = :tempo
-            ");
-
-            if ($query->execute(['local' => $atividades->getlocal(), 'tempo' => $atividades->gettempo()])) {
-                $result = $query->fetch();
-                return $result ? $result : false;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-            return false;
-        }
-    }
-
-    function listarAtividades() {
-        try {
-            $query = $this->conexao->prepare("SELECT * FROM atividades");
-            $query->execute();
+            $query = $this->conexao->prepare("SELECT * FROM atividades JOIN bicicleta on atividades.codBicicleta = bicicleta.codBicicleta WHERE atividades.codUsuario = :codUsuario");
+            $query->execute(['codUsuario' => $codUsuario]);
             return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return false;
         }
     }
-}
+} 
 ?>

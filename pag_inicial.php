@@ -28,8 +28,10 @@ if (!isset($_SESSION['logado']) || !$_SESSION['logado']) {
         <nav class="navegacao">
             <ul>
                 <li><a href="indexAtividades.php">Atividades</a></li>
+                <li><a href="listagemBicicleta.php">Bicicletas</a></li>
+                <li><a href=".php"></a></li>
                 <li><a href="editarPerfil.php">Perfil</a></li>
-                <li><a href="indexAtividades.php">Rotas</a></li>
+                <li><a href="rotas.php">Rotas</a></li>
             </ul>
             <form action="logica/logica_usuario.php" method="post">
                 <input type="submit" class="btn-sair" name="sair" value="Sair">
@@ -40,7 +42,12 @@ if (!isset($_SESSION['logado']) || !$_SESSION['logado']) {
         </nav>
     </header>
 
-    <img src="imagens/telainicial.jpg" alt="Banner" class="banner">
+    <!-- Banner -->
+    <div class="banner-container">
+        <img src="imagens/telainicial.jpg" alt="Banner" class="banner">
+        <div class="banner-text">BikeTracker: O seu aplicativo de ciclismo</div>
+    </div>
+
 
     <main>
         <section class="container">
@@ -54,15 +61,21 @@ if (!isset($_SESSION['logado']) || !$_SESSION['logado']) {
 
             <div class="imagens-container">
                 <div class="imagem-item">
-                    <p class="texto-imagem">MAPAS</p>
+                    <p class="texto-imagem">
+                    <h2>MAPAS</h2>
+                    </p>
                     <img src="imagens/mapas.jpeg" alt="Gráfico">
                 </div>
                 <div class="imagem-item">
-                    <p class="texto-imagem">COMEÇAR ATIVIDADE</p>
+                    <p class="texto-imagem">
+                    <h2>ATIVIDADE</h2>
+                    </p>
                     <img src="imagens/iniciarPedalada.jpeg" alt="Bike">
                 </div>
                 <div class="imagem-item">
-                    <p class="texto-imagem">PROGRESSO</p>
+                    <p class="texto-imagem">
+                    <h2>PROGRESSO</h2>
+                    </p>
                     <img src="imagens/progresso.jpeg" alt="Mapa">
                 </div>
             </div>
@@ -84,49 +97,24 @@ if (!isset($_SESSION['logado']) || !$_SESSION['logado']) {
 
             <p>Além disso, o aplicativo oferece:</p>
             <ul>
-                <li><strong>Monitoramento em Tempo Real:</strong> Acompanhe seu desempenho e estatísticas em tempo real enquanto pedala.</li>
-                <li><strong>Mapas Detalhados:</strong> Explore rotas e trilhas com mapas detalhados e sugestões de trajetos.</li>
-                <li><strong>Alertas Personalizados:</strong> Receba notificações sobre condições climáticas adversas e metas alcançadas.</li>
-                <li><strong>Análise de Desempenho:</strong> Obtenha relatórios detalhados sobre seu desempenho físico e evolução ao longo do tempo.</li>
-                <li><strong>Integração com Dispositivos:</strong> Sincronize o app com dispositivos de monitoramento e sensores de ciclismo.</li>
+                <strong>Monitoramento em Tempo Real:</strong> 
+                <p>Acompanhe seu desempenho e estatísticas em tempo real enquanto pedala.</p>
+                <strong>Mapas Detalhados:</strong> Explore rotas e trilhas com mapas detalhados e sugestões de trajetos.</p>
+                <p><strong>Alertas Personalizados:</strong> Receba notificações sobre condições climáticas adversas e metas alcançadas.</p>
+                <p><strong>Análise de Desempenho:</strong> Obtenha relatórios detalhados sobre seu desempenho físico e evolução ao longo do tempo.</p>
+                <p><strong>Integração com Dispositivos:</strong> Sincronize o app com dispositivos de monitoramento e sensores de ciclismo.</p>
             </ul>
-
             <p>Essas funcionalidades foram desenvolvidas para garantir que você tenha a melhor experiência e maximize
                 seus treinos, mantendo-se sempre informado e preparado para qualquer desafio.</p>
+
+           <h3>Por que escolher o BikeTracker?</h3>
+           <ul>
+                <p><strong>Intuitivo e fácil de usar:</strong> Interface amigável e design moderno para que você possa se concentrar no que realmente importa: pedalar.</p>
+                <p><strong>Personalizado para você:</strong> Adapte o aplicativo às suas necessidades e preferências, escolhendo quais dados visualizar e quais alertas receber</p>
+                <p><strong>Seguro e confiável:</strong>Proteja seus dados com as mais recentes tecnologias de segurança e desfrute de uma experiência sem interrupções.</p>
+           </ul>
         </aside>
 
-    </main>
-
-    <main>
-        <section class="carousel-container">
-            <button class="carousel-nav prev" onclick="mudarSlide(-1)">&#10094;</button>
-            <div class="carousel">
-                <div class="carousel-item">
-                    <h2 class="carousel-title">Circuito Cascatas e Montanhas</h2>
-                    <p class="carousel-text">Ao longo dos seus 123 km, cicloturistas vivenciam
-                        experiências de contato com a natureza e com ambiente predominantemente colonial.
-                        Diversas cachoeiras, como a Cascata do Chuvisqueiro e o Parque das Oito Cachoeiras,
-                        prometem encher os olhos do visitante ao longo do caminho, assim como cultura, histórica
-                        e gastronomia típica. Dividido em quatro estapas, o circuito passa pelos municípios
-                        de Rolante, Riozinho e São Francisco de Paula e pode ser percorrido de dois a cinco dias,
-                        de acordo com o tempo e preparo de cada ciclista. </p>
-                    <p>Partida/Chegada: Rolante (RS)</p>
-                    <p>Percurso total: 123 km</p>
-                    <p>Altimetria acumulada: 3.100 metros</p>
-                    <p>Entidade gestora: Associação dos Amigos do Circuito Cascatas e Montanhas – AMICAM</p>
-                    <p>Site: http://cascatasemontanhas.com.br/</p>
-
-                    <img src="imagens/carousel1.jpg" alt="Imagem 1 do Carrossel">
-                </div>
-                <div class="carousel-item">
-                    <h2 class="carousel-title">Título 2</h2>
-                    <p class="carousel-text">Texto para a segunda imagem do carrossel.</p>
-                    <img src="imagens/carousel2.jpg" alt="Imagem 2 do Carrossel">
-                </div>
-                <!-- Adicione mais itens conforme necessário -->
-            </div>
-            <button class="carousel-nav next" onclick="mudarSlide(1)">&#10095;</button>
-        </section>
     </main>
 
     <footer class="footer">

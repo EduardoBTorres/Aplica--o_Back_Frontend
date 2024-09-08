@@ -1,67 +1,86 @@
 <?php
-class Atividades {
+class Atividades
+{
     private $codAtividades;
     private $titulo;
     private $local;
     private $distancia;
     private $tempo;
     private $data;
-    private $descricao;  
+    private $descricao;
+    private $codUsuario;
+    private $codBicicleta;
 
-    public function setcodAtividades($codAtividades) {
+    public function setCodAtividades($codAtividades) {
         $this->codAtividades = $codAtividades;
     }
 
-    public function getcodAtividades() {
+    public function getCodAtividades() {
         return $this->codAtividades;
     }
 
-    public function settitulo($titulo) {
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
     }
 
-    public function gettitulo() {
+    public function getTitulo() {
         return $this->titulo;
     }
 
-    public function setlocal($local) {
+    public function setLocal($local) {
         $this->local = $local;
     }
 
-    public function getlocal() {
+    public function getLocal() {
         return $this->local;
     }
 
-    public function setdistancia($distancia) {
+    public function setDistancia($distancia) {
         $this->distancia = $distancia;
     }
 
-    public function getdistancia() {
+    public function getDistancia() {
         return $this->distancia;
     }
 
-    public function settempo($tempo) {
+    public function setTempo($tempo) {
         $this->tempo = $tempo;
     }
 
-    public function gettempo() {
+    public function getTempo() {
         return $this->tempo;
     }
 
-    public function setdata($data) {
+    public function setData($data) {
         $this->data = $data;
     }
 
-    public function getdata() {
+    public function getData() {
         return $this->data;
     }
 
-    public function setdescricao($descricao) {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
     }
 
-    public function getdescricao() {
+    public function getDescricao() {
         return $this->descricao;
+    }
+
+    public function setCodUsuario($codUsuario) {
+        $this->codUsuario = $codUsuario;
+    }
+
+    public function getCodUsuario() {
+        return $this->codUsuario;
+    }
+
+    public function setCodBicicleta($codBicicleta) {
+        $this->codBicicleta = $codBicicleta;
+    }
+
+    public function getCodBicicleta() {
+        return $this->codBicicleta;
     }
 }
 ?>

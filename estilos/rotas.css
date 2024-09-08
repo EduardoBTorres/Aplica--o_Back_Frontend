@@ -1,0 +1,194 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    margin: 0;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #000; /* Barra de navegação preta */
+    color: #fff;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo img {
+    height: 6.25em; /* 100px */
+}
+
+.navegacao {
+    margin-right: 1.25em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1.25em; /* Aproxima o menu de navegação do logo */
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+    margin-right: 45em;
+}
+
+.navegacao li {
+    margin: 0 0.625em; /* 10px */
+}
+
+.navegacao a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+/* Botão de Sair e Nome do Usuário */
+.user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8em; /* Distância da borda direita */
+}
+
+.btn-sair {
+    background-color: #b2ff59; /* Verde claro */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.625em; /* 10px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-sair:hover {
+    background-color: #9dff57; /* Verde um pouco mais escuro */
+}
+
+/* Estilização da seção de conteúdo */
+.conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2em;
+    height: calc(100vh - 6.25em); /* Ajusta o tamanho para preencher a tela, subtraindo o tamanho do cabeçalho */
+}
+
+/* Barra lateral */
+.barra-lateral {
+    width: 25%;
+    background-color: #1e1e1e; /* Fundo preto */
+    border: 0.2em solid #b2ff59; /* Borda verde claro */
+    border-radius: 1em;
+    padding: 1em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
+    color: #b2ff59;
+}
+
+.barra-lateral h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #b2ff59;
+}
+
+.barra-lateral label {
+    color: #b2ff59;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+.barra-lateral input,
+.barra-lateral button {
+    width: 100%;
+    padding: 0.8em;
+    border-radius: 0.5em;
+    border: 0.1em solid #ccc;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #fff;
+    background-color: #333;
+}
+
+.barra-lateral button {
+    background-color: #b2ff59;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.barra-lateral button:hover {
+    background-color: #9dff57;
+}
+
+#resultados h3 {
+    margin-top: 1em;
+    color: #b2ff59;
+}
+
+#mapa {
+    width: 70%;
+    height: 100%;
+    border-radius: 1em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer {
+    background-color: #1f2914; /* Verde claro */
+    color: #fff;
+    padding: 1.25em; /* 20px */
+    text-align: center;
+    margin-top: 1em;
+}
+
+.links-footer {
+    margin-bottom: 0.625em; /* 10px */
+}
+
+.link-footer {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.625em; /* 10px */
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+}
+
+.store-icons {
+    margin-bottom: 0.625em; /* 10px */
+}
+
+.icone-store {
+    height: 1.875em; /* 30px */
+    margin: 0 0.625em; /* 10px */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .barra-lateral,
+    #mapa {
+        width: 90%;
+        margin-bottom: 1.5em;
+    }
+}

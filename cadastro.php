@@ -8,12 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <script>
-        function mostrarMensagemSucesso() {
-            alert('Cadastro realizado com sucesso!');
-        }
-    </script>
+    <script src="scripts/validacaoCadastro.js"></script>
 </head>
 <body>
     <div class="container">
@@ -24,7 +19,7 @@
         </header>
 
         <h1 class="titulo">FAZER CADASTRO</h1>
-        <form action="logica/logica_usuario.php" method="post" enctype="multipart/form-data" class="form-cadastro" onsubmit="mostrarMensagemSucesso()">
+        <form action="logica/logica_usuario.php" method="post" enctype="multipart/form-data" class="form-cadastro" onsubmit="validarFormulario()">
             <label for="nome" class="label">Nome:</label>
             <input type="text" id="nome" name="nome" class="input" required>
 
