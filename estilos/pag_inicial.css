@@ -11,6 +11,11 @@ body {
     background-color: #fff;
 }
 
+h3{
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
 /* Cabeçalho */
 .cabecalho {
     background-color: #000; /* Barra de navegação preta */
@@ -37,7 +42,7 @@ body {
 .navegacao ul {
     list-style: none;
     display: flex;
-    margin-right: 50em;
+    margin-right: 45em;
 }
 
 .navegacao li {
@@ -80,9 +85,32 @@ body {
 /* Banner */
 .banner {
     width: 100%;
-    height: 25em; /* 400px */
+    height: 45em; /* 400px */
     object-fit: cover;
     margin-bottom: 1.25em; /* 20px */
+   
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 40em; /* 400px */
+    margin-bottom: 1.25em; /* 20px */
+    padding-bottom: 1em;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 1.25em; /* Ajuste a distância da borda esquerda conforme necessário */
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
+    color: #fff;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 4.5em; /* Ajuste o tamanho da fonte conforme necessário */
+    border-radius: 0.3125em; /* 5px */
+    max-width: 45%; /* Limita a largura do texto */
+    text-align: center;
 }
 
 /* Principal */
@@ -90,12 +118,15 @@ main {
     padding: 1.25em; /* 20px */
     display: flex;
     justify-content: center;
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
 }
+
 
 .titulo {
     text-align: center;
     margin-bottom: 1.25em; /* 20px */
     font-size: 2em;
+    margin-top: 3em;
 }
 
 .texto-principal {
@@ -103,6 +134,8 @@ main {
     margin-bottom: 2.5em; /* 40px */
     font-size: 1.125em;
     line-height: 1.5;
+    padding-right: 1.20em;
+    max-width: 70em;
 }
 
 .texto-secundario {
@@ -110,110 +143,36 @@ main {
     margin-bottom: 2.5em; /* 40px */
     font-size: 1.125em;
     line-height: 1.5;
-}
-
-/* Carrossel */
-.carousel-container {
-    margin: 1.25em auto; /* 20px */
-    padding: 1.25em; /* 20px */
-    border: 0.25em solid #000000; /* 4px */
-    border-radius: 0.625em; /* 10px */
+    padding-right: 1.20em;
+    padding-top: 2em;
     max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: #f0f0f0; /* Fundo do container em cinza claro */
-    position: relative;
+    max-width: 70em;
 }
 
-.carousel-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1em; /* Espaço entre imagem e texto */
-}
-
-.carousel-title {
-    font-size: 1.5em;
-    margin-bottom: 0.625em; /* 10px */
-    color: #333;
-}
-
-.carousel-text {
-    font-size: 1.2em;
-    margin-bottom: 1.25em; /* 20px */
-    color: #666;
-    background-color: #e0e0e0; /* Cinza claro para o fundo do campo de texto */
-    padding: 0.625em; /* 10px */
-    border-radius: 0.3125em; /* 5px */
-    text-align: justify;
-    flex: 1;
-}
-
-.carousel img {
-    width: 50%;
-    height: 30em;
-    object-fit: cover;
-    border-radius: 0.625em; /* 10px */
-}
-
-/* Setas de navegação */
-.carousel-nav {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto transparente */
-    color: #fff;
-    border: none;
-    padding: 0.625em; /* 10px */
-    font-size: 1.5em;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.prev {
-    left: 0.625em; /* 10px */
-}
-
-.next {
-    right: 0.625em; /* 10px */
-}
-
-.carousel-nav:hover {
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo um pouco mais escuro ao passar o mouse */
-}
-
-/* Container */
-.container {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 62.5em; /* 1000px */
-    padding: 0 1.25em; /* 20px */
-}
-
-/* Imagens */
 .imagens-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 2.5em; /* 40px */
-    margin-bottom: 1.25em; /* 20px */
+    justify-content: space-between; /* Distribui as imagens com espaço entre elas */
+    align-items: center; /* Alinha as imagens verticalmente */
+    gap: 1em; /* Espaçamento entre as imagens */
+    max-width: 70em;
+    
 }
 
 .imagem-item {
-    flex: 1;
-    margin: 0 0.625em; /* 10px */
+    text-align: center; /* Centraliza o texto e a imagem */
+    flex-basis: calc(33.33% - 0.666em); /* Ajusta a largura de cada item com base no número de imagens e no gap */
 }
 
 .imagem-item img {
-    width: 100%;
-    height: 35em; 
-    object-fit: cover;
+    max-width: 100%; /* Faz com que as imagens ocupem o espaço disponível */
+    height: auto; /* Mantém a proporção da imagem */
+    padding-right: 1em;
 }
 
-.texto-imagem {
-    text-align: center;
-    margin-bottom: 0.3125em; /* 5px */
+.texto-imagem h2 {
+    margin: 10px 0; /* Espaçamento ao redor do texto */
 }
+
 
 /* Botão de Informações Adicionais */
 .btn-toggle-info {
@@ -225,6 +184,7 @@ main {
     padding: 0.625em 1.25em; /* 10px 20px */
     font-size: 1em;
     cursor: pointer;
+    margin-left: 30em;
 }
 
 .btn-toggle-info:hover {
@@ -233,21 +193,34 @@ main {
 
 /* Aside */
 .informacoes-adicionais {
-    background-color: #f1f1f1;
-    padding: 0.9375em; /* 15px */
+    background-color: #b2ff59; /* Verde */
+    color: #000; /* Preto */
+    padding: 1.25em; /* 20px */
     border-radius: 0.3125em; /* 5px */
     display: none; /* Inicialmente escondido */
     text-align: justify;
+    height: 70em;
+    max-width: 50%;
+    overflow-y: auto; /* Adiciona barra de rolagem se necessário */
+    padding: 2em;
+}
+
+.informacoes-adicionais p {
+    width: 90%;
+    margin-bottom: 1em; /* Margem inferior entre parágrafos */
 }
 
 .titulo-aside {
     font-size: 1.5em;
     margin-bottom: 0.625em; /* 10px */
+    margin-top: 3em;
+    color: #000000; /* Branco para o título para contrastar com o fundo verde */
 }
+
 
 /* Rodapé */
 .footer {
-    background-color: #1f3702; /* Verde claro */
+    background-color: #1f2914; /* Verde claro */
     color: #fff;
     padding: 1.25em; /* 20px */
     text-align: center;

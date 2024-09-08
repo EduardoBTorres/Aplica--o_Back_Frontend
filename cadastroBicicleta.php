@@ -34,6 +34,10 @@
             <label for="aro" class="label">Aro</label>
             <input type="number" id="aro" name="aro" class="input" required>
 
+            <label for="cor" class="label">Cor</label>
+            <input type="text" id="cor" name="cor" class="input" required>
+
+
             <button type="submit" id='cadastrar' name="cadastrar" value="Cadastrar" class="botao-submit">Registrar</button>
         </form>
     </div>

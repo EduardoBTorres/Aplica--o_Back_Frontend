@@ -1,5 +1,10 @@
 <?php
-require_once('logica/BicicletaDAO.php'); 
+session_start();
+require_once('logica/bicicletaDAO.php');
+
+$codUsuario = $_SESSION['codUsuario'];
+$bicicletasDAO = new BicicletaDAO();
+$bicicletas = $bicicletasDAO->buscarBicicletaPorUsuario($codUsuario);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -12,12 +17,7 @@ require_once('logica/BicicletaDAO.php');
 
 <main>
     <?php
-        // Cria uma instância da classe BicicletaDAO
-        $bicicletasDAO = new BicicletaDAO();
-
-        // Chama a função listarBicicleta e armazena o resultado em uma variável
-        $bicicletas = $bicicletasDAO->listarBicicleta();
-
+    
         // Verifica se há bicicletas cadastradas
         if(empty($bicicletas)){
             ?>
@@ -26,15 +26,16 @@ require_once('logica/BicicletaDAO.php');
                 </section>
             <?php
         } else {
-            // Itera sobre as bicicletas e exibe as informações
-            foreach($bicicletas as $bicicleta){
+             echo "<h2>Listagem de bicicletas:</h2>";
+        
+            foreach($bicicletas as $bicicleta=>$value){
                 ?>
-                <section>
-                    <h2>Listagem de bicicletas:</h2>
-                    <p>Marca: <?php echo htmlspecialchars($bicicleta['marca']); ?></p>
-                    <p>Modelo: <?php echo htmlspecialchars($bicicleta['modelo']); ?></p>
-                    <p>Aro: <?php echo htmlspecialchars($bicicleta['aro']); ?></p>    
-                </section>
+               
+                    
+                    <p>Marca: <?php echo htmlspecialchars($value['marca']); ?></p>
+                    <p>Modelo: <?php echo htmlspecialchars($value['modelo']); ?></p>
+                    <p>Aro: <?php echo htmlspecialchars($value['aro']); ?></p>    
+                
                 <?php
             }
         }

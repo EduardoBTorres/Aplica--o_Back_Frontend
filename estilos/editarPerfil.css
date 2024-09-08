@@ -1,0 +1,197 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização do corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #000; /* Barra de navegação preta */
+    color: #fff;
+    padding: 0.625em 1.25em; /* 10px 20px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo img {
+    height: 6.25em; /* 100px */
+}
+
+.navegacao {
+    margin-right: 1.25em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1.25em; /* Aproxima o menu de navegação do logo */
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+    margin-right: 45em;
+}
+
+.navegacao li {
+    margin: 0 0.625em; /* 10px */
+}
+
+.navegacao a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navegacao a:hover {
+    text-decoration: underline;
+}
+
+/* Botão de Sair e Nome do Usuário */
+.user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8em; /* Distância da borda direita */
+}
+
+.btn-sair {
+    background-color: #b2ff59; /* Verde claro */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.625em; /* 10px */
+    padding: 0.625em 1.25em; /* 10px 20px */
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-sair:hover {
+    background-color: #9dff57; /* Verde um pouco mais escuro */
+}
+
+/* Container do formulário */
+.container-form {
+    background-color: #fff;
+    border: 0.2em solid #b2ff59;
+    border-radius: 1em;
+    margin: 2em auto;
+    padding: 2em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 40em;
+}
+
+.container-form h3 {
+    color: #000;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.container-form p {
+    margin-bottom: 1.5em;
+}
+
+.container-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.container-form input[type="text"],
+.container-form input[type="email"],
+.container-form input[type="password"],
+.container-form input[type="file"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 0.1em solid #ccc;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container-form input[type="submit"],
+.container-form button {
+    background-color: #b2ff59;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.8em 1.5em;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.container-form input[type="submit"]:hover,
+.container-form button:hover {
+    background-color: #9dff57;
+}
+
+#botaoExcluir {
+    margin-left: 40%;
+}
+
+.footer {
+    background-color: #1f2914; /* Verde claro */
+    color: #fff;
+    padding: 1.25em; /* 20px */
+    text-align: center;
+}
+
+.links-footer {
+    margin-bottom: 0.625em; /* 10px */
+}
+
+.link-footer {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.625em; /* 10px */
+}
+
+.link-footer:hover {
+    text-decoration: underline;
+}
+
+.store-icons {
+    margin-bottom: 0.625em; /* 10px */
+}
+
+.icone-store {
+    height: 1.875em; /* 30px */
+    margin: 0 0.3125em; /* 5px */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navegacao ul {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1em;
+    }
+
+    .user-info {
+        margin-top: 1em;
+    }
+
+    .container-form {
+        width: 90%;
+        padding: 1.5em;
+    }
+}

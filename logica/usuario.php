@@ -1,53 +1,60 @@
 <?php
-   Class Usuario{
-       private $codUsuario;
-       private $nome;
-       private $email;
-       private $cpf;
-       private $senha;
-       private $imagem;  
-
-      public function setcodUsuario($codUsuario) {
+class Usuario
+{
+    private $codUsuario;
+    private $nome;
+    private $email;
+    private $cpf;
+    private $senha;
+    private $imagem;
+    
+    
+    public function setCodUsuario($codUsuario) {
         $this->codUsuario = $codUsuario;
-            }
-      public function getcodUsuario() {
+    }
+
+    public function getCodUsuario() {
         return $this->codUsuario;
-            }
+    }
 
-      public function setnome($nome) {
-             $this->nome = $nome;
-            }
-      public function getnome() {
+    public function setNome($nome) {
+        $this->nome = $nome;
+    }
+
+    public function getNome() {
         return $this->nome;
-            }
+    }
 
-      public function setemail($email) {
-             $this->email = $email;
-            }
-      public function getemail() {
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getEmail() {
         return $this->email;
-            }
+    }
 
-      public function setcpf($cpf) {
-             $this->cpf = $cpf;
-            }
-      public function getcpf() {
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    public function getCpf() {
         return $this->cpf;
-            }
+    }
 
-      public function setsenha($senha) {
-             $this->senha = $senha;
-            }
-      public function getsenha() {
+    public function setSenha($senha) {
+        $this->senha = $senha;
+    }
+
+    public function getSenha() {
         return $this->senha;
-            }
+    }
 
-      public function setimagem($imagem) {
-             $this->imagem = $imagem;
-            }
-      public function getimagem() {
+    public function setImagem($imagem) {
+        $this->imagem = $imagem;
+    }
+
+    public function getImagem() {
         return $this->imagem;
-            }
-
+    }
 }
 ?>

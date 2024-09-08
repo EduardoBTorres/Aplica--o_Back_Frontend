@@ -1,6 +1,6 @@
 -- Criação do banco de dados
-CREATE DATABASE projeto_backend;
-USE projeto_backend;
+CREATE DATABASE baiketracker;
+USE biketracker;
 
 -- Criação da tabela 'usuario'
 CREATE TABLE usuario (

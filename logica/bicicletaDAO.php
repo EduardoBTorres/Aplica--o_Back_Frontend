@@ -1,99 +1,76 @@
 <?php
-   Class BicicletaDAO{
+require_once('bicicleta.php');
+class BicicletaDAO {
     private $conexao;
 
     public function __construct() {
-           try {
-            $this->conexao = new PDO("mysql:host=localhost; dbname=projeto_backend; charset=utf8", "root","");
+        try {
+            $this->conexao = new PDO("mysql:host=localhost;dbname=biketracker;charset=utf8", "root", "");
             $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            }catch(PDOException $e) {
-                    echo 'Error: ' . $e->getMessage();
-            }
-    }
-
-    function inserirBicicleta($bicicleta){
-       try {
-            $query = $this->conexao->prepare("INSERT into bicicleta (marca, modelo, aro) values (:marca, :modelo, :aro)");
-
-            $resultado = $query->execute(['marca' => $bicicleta->getmarca(),'modelo' => $bicicleta->getmodelo(),'aro' => $bicicleta->getaro()]);
-            
-            return $resultado;
-            
-        }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-
-    }
-
-
-    function alterarBicicleta($bicicleta){
-        try {
-            $query = $this->conexao->prepare("UPDATE bicicleta set marca= :marca, modelo = :modelo, aro= :aro where codBicicleta = :codBicicleta");
-            $resultado = $query->execute(['marca' => $bicicleta->getmarca(),'modelo' => $bicicleta->getmodelo(),'aro' => $bicicleta->getaro(),'codBicicleta' => $bicicleta->getcodBicicleta()]);   
-            return $resultado;
-        }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-    }
-
-
-    function deletarBicicleta($bicicleta){
-        try {
-            $query = $this->conexao->prepare("DELETE from bicicleta where codBicicleta = :codBicicleta");
-            $resultado = $query->execute(['codBicicleta' => $bicicleta->getcodBicicleta()]);   
-             return $resultado;
-        }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-        }
-
-    }
-
-     function buscarBicicleta($bicicleta){
-        try {
-        $query = $this->conexao->prepare("SELECT * from bicicleta where codBicicleta=:codBicicleta");
-        if($query->execute(['codBicicleta' => $bicicleta->getcodBicicleta()])){
-            $bicicleta = $query->fetch(); //coloca os dados num array $bicicleta
-            return $bicicleta;
-        }
-        else{
-            return false;
-        }
-         }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-      }  
-    }
-
-    function acessarBicicleta($bicicleta){
-        try {
-        $query = $this->conexao->prepare("SELECT * from bicicleta where modelo=:modelo and aro=:aro");
-        if($query->execute(['modelo' => $bicicleta->getmodelo(), 'aro' => $bicicleta->getaro()])){
-            $bicicleta = $query->fetch(); //coloca os dados num array $bicicleta
-          if ($bicicleta)
-            {  
-                return $bicicleta;
-            }
-        else
-            {
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
-         }catch(PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
-      }  
-    }
-    function listarBicicleta() {
-        try {
-            $query = $this->conexao->prepare("SELECT * FROM bicicleta");
-            $query->execute();
-            return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
-            return false;
         }
     }
 
-   }
-   ?>
+    public function inserirBicicleta(Bicicleta $bicicleta) {
+        $sql = "INSERT INTO bicicleta (marca, modelo, aro, cor, codUsuario) VALUES (:marca, :modelo, :aro, :cor, :codUsuario)";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(':marca', $bicicleta->getMarca());
+        $stmt->bindValue(':modelo', $bicicleta->getModelo());
+        $stmt->bindValue(':aro', $bicicleta->getAro());
+        $stmt->bindValue(':cor', $bicicleta->getCor());
+        $stmt->bindValue(':codUsuario', $bicicleta->getCodUsuario(), PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    public function buscarBicicletaPorId($id) {
+        $sql = "SELECT * FROM bicicletas WHERE cod_bicicleta = :id";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($data) {
+            $bicicleta = new Bicicleta();
+            $bicicleta->setCodBicicleta($data['cod_bicicleta']);
+            $bicicleta->setMarca($data['marca']);
+            $bicicleta->setModelo($data['modelo']);
+            $bicicleta->setAro($data['aro']);
+            $bicicleta->setCor($data['cor']);
+            $bicicleta->setCodUsuario($data['cod_usuario']);
+            return $bicicleta;
+        }
+        return null;
+    }
+
+    public function atualizarBicicleta(Bicicleta $bicicleta) {
+        $sql = "UPDATE bicicletas SET marca = :marca, modelo = :modelo, aro = :aro, cor = :cor WHERE cod_bicicleta = :cod_bicicleta";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':marca', $bicicleta->getMarca());
+        $stmt->bindParam(':modelo', $bicicleta->getModelo());
+        $stmt->bindParam(':aro', $bicicleta->getAro());
+        $stmt->bindParam(':cor', $bicicleta->getCor());
+        $stmt->bindParam(':cod_bicicleta', $bicicleta->getCodBicicleta(), PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    public function deletarBicicleta($id) {
+        $sql = "DELETE FROM bicicletas WHERE cod_bicicleta = :id";
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+
+public function buscarBicicletaPorUsuario($codUsuario) {
+    $sql = "SELECT * FROM bicicleta WHERE codUsuario = :codUsuario";
+    $stmt = $this->conexao->prepare($sql);
+    $stmt->bindParam(':codUsuario', $codUsuario, PDO::PARAM_INT);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    return $data;
+}
+}
+?>
