@@ -50,10 +50,10 @@ Instalar XAMPP: Baixe e instale o XAMPP (Apache, MySQL e PHP) em https://www.apa
 Iniciar o Servidor: Abra o painel de controle do XAMPP e inicie o Apache e o MySQL.
 Configurar o Banco de Dados:
 Acesse http://localhost/phpmyadmin e crie um novo banco de dados.
-Importe o arquivo database.sql (incluso no projeto) para criar as tabelas necessárias.
+Copie e cole o arquivo banco.txt (incluso no projeto) para criar as tabelas necessárias.
 Configurar o Projeto:
 Coloque os arquivos do projeto na pasta htdocs dentro do diretório de instalação do XAMPP.
-Acesse o projeto através do navegador em http://localhost/nomedoseuprojeto.
+Acesse o projeto através do navegador em http://localhost/ProjetoBiketracker.
 Executar o Projeto
 Acessar o Projeto: Abra o navegador e vá até http://localhost/ProjetoBiketracker.
 Usar o Sistema: Realize operações como cadastro e login de usuários, gerenciamento de atividades e bicicletas, etc.# Aplica--o_Back_Frontend
