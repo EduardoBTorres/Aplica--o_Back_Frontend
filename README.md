@@ -57,4 +57,4 @@ Acesse o projeto através do navegador em http://localhost/nomedoseuprojeto.
 Executar o Projeto
 Acessar o Projeto: Abra o navegador e vá até http://localhost/ProjetoBiketracker.
 Usar o Sistema: Realize operações como cadastro e login de usuários, gerenciamento de atividades e bicicletas, etc.# Aplica--o_Back_Frontend
-# Aplica--o_Back_Frontend
+
