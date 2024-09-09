@@ -60,14 +60,14 @@ $bicicletas = $bicicletasDAO->buscarBicicletaPorUsuario($codUsuario);
                     <p>Modelo: <?php echo htmlspecialchars($value['modelo']); ?></p>
                     <p>Aro: <?php echo htmlspecialchars($value['aro']); ?></p>
                     <p>Cor: <?php echo htmlspecialchars($value['cor']); ?></p>
+                </div>
+                <div>
                     <!-- Botão de Edição -->
                     <a href="editarBicicleta.php">
-                        <button class="btn-editar">Editar</button>
-                    </a>
-                    <a href="excluirBicicleta.php">
-                        <button class="btn-editar">Excluir</button>
+                        <button class="btn-editar">Editar Bicicletas</button>
                     </a>
                 </div>
+
         <?php
             }
 
@@ -75,6 +75,7 @@ $bicicletas = $bicicletasDAO->buscarBicicletaPorUsuario($codUsuario);
             echo "</div>"; // Fecha a div.grid-container
         }
         ?>
+
     </main>
 
     <section class="registrar-atividade-section" 1>

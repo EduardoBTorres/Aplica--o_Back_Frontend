@@ -37,21 +37,23 @@ if (isset($_POST['cadastrar'])) {
 }
 
 # EDITAR ATIVIDADES
-if(isset($_POST['editar'])){
+if (isset($_POST['editar'])) {
+    $codAtividades = $_POST['codAtividades'];
     
-    $codAtividades = $_POST['editar'];
+    // Criando um novo objeto de Atividades
+    $atividades = new Atividades();
+    
+    // Atribuindo o valor do código da atividade ao objeto
+    $atividades->setCodAtividades($codAtividades);
 
-    $atividades=new Atividades();
-
-    $atividades->setcodAtividades($codAtividades);
-
-    $atividadesDAO= new AtividadesDAO();
-
-    $retorno=$atividadesDAO->buscarAtividadePorId($atividades);
-
-    require_once('../indexAtividades.php');
-}  
-
+    // Criando um novo objeto DAO
+    $atividadesDAO = new AtividadesDAO();
+    
+    // Corrigindo a chamada da função, passando o código da atividade, e não o objeto
+    $retorno = $atividadesDAO->buscarAtividadePorId($atividades->getCodAtividades());
+}
+ 
+# ALTERAR ATIVIDADE
 if (isset($_POST['editar'])) {
     $codAtividades = $_POST['codAtividades'];
     $titulo = $_POST['titulo'];
@@ -83,16 +85,13 @@ if (isset($_POST['editar'])) {
 
 # DELETAR ATIVIDADES
 if (isset($_POST['deletar'])) {
-    $codAtividades = $_POST['codAtividades'];
+    $codAtividades = $_POST['codAtividades'];  // Pegando o código da atividade
 
-    $atividades = new Atividades();
-    $atividades->setCodAtividades($codAtividades);
-
-    $atividadesDAO = new AtividadesDAO();
-    if ($atividadesDAO->deletarAtividades($atividades)) {
+    $AtividadesDAO = new AtividadesDAO();
+    if ($AtividadesDAO->deletarAtividades($codAtividades)) {
         echo "<script>alert('Atividade deletada com sucesso');</script>";
         header("Location: ../indexAtividades.php");
-        exit();
+        exit;
     } else {
         echo "<script>alert('Erro ao deletar atividade');</script>";
     }

@@ -1,14 +1,10 @@
 <?php
 session_start();
- require_once('logica/Bicicleta.php');
- require_once('logica/BicicletaDAO.php'); 
+require_once('logica/bicicletaDAO.php');
 
- $codBicicleta = $_SESSION['codUsuario'];
-
- $bicicleta=new Bicicleta();
- $bicicleta->setcodBicicleta($codBicicleta);
- $bicicletasDAO = new BicicletaDAO();
- $retorno = $bicicletasDAO->buscarBicicletaPorUsuario($bicicleta);
+$codUsuario = $_SESSION['codUsuario'];
+$bicicletasDAO = new BicicletaDAO();
+$bicicletas = $bicicletasDAO->buscarBicicletaPorUsuario($codUsuario);
 
 ?>
 <!DOCTYPE html>
@@ -22,11 +18,12 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <script src="scripts/validacaoEdicao.js" defer></script>
 </head>
+
 <body>
-<header class="cabecalho">
+    <header class="cabecalho">
         <div class="logo">
             <img src="imagens/novologo.png" alt="Logo da Aplicação">
         </div>
@@ -42,7 +39,7 @@ session_start();
                 <input type="submit" class="btn-sair" name="sair" value="Sair">
             </form>
             <div class="user-info">
-            <span>Bem vindo <?php echo $_SESSION['nome']; ?></span>  
+                <span>Bem vindo <?php echo $_SESSION['nome']; ?></span>
             </div>
         </nav>
     </header>
@@ -50,22 +47,49 @@ session_start();
     <main>
         <section class="container-form">
             <h3>Editar Bicicleta</h3>
-            <form action="logica/logica_bicicleta.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
-                <p><label for="marca">Marca: </label><input type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($retorno['marca']); ?>"></p>
-                <p><label for="modelo">Modelo: </label><input type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($retorno['modelo']); ?>"></p>
-                <p><label for="aro">Aro: </label><input type="text" name="aro" id="aro" value="<?php echo htmlspecialchars($retorno['aro']); ?>"></p>
-                <p><label for="cor">Cor: </label><input type="text" name="cor" id="cor" value="<?php echo htmlspecialchars($retorno['cor']); ?>"></p>
-                <input type="hidden" id='codBicicleta' name='codBicicleta' value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">
-                <p><input type="submit" id='editar' name='editar' value="Editar"></p>
-            </form>
-        </section>
+            <div>
+                <?php
 
-        <section class="container-form">
-            <h3>Excluir Bicicleta</h3>
-            <form action="logica/logica_bicicleta.php" method="post" onsubmit="return confirma_excluir()">
-                <input type="hidden" id="codBicicleta" name="codBicicleta" value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">
-                <button id="botaoExcluir"  type="submit" name="deletar" value="<?php echo htmlspecialchars($retorno['codBicicleta']); ?>">Deletar</button>
-            </form>
+                // Verifica se há atividades cadastradas
+                if (empty($bicicletas)) {
+                ?>
+                    <section>
+                        <p>Não há atividades cadastradas.</p>
+                    </section>
+                    <?php
+                } else {
+                    echo "<div class='grid-container'>";
+
+                    foreach ($bicicletas as $bicicletas => $value) {
+                    ?>
+                        <form action="logica/logica_bicicleta.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+                            <p><label for="marca">Marca:</label>
+                                <input type="text" name="marca" id="marca" value="<?php echo htmlspecialchars($value['marca']); ?>">
+                            </p>
+
+                            <p><label for="modelo">Modelo:</label>
+                                <input type="text" name="modelo" id="modelo" value="<?php echo htmlspecialchars($value['modelo']); ?>">
+                            </p>
+
+                            <p><label for="aro">Aro:</label>
+                                <input type="number" name="aro" id="aro" value="<?php echo htmlspecialchars($value['aro']); ?>">
+                            </p>
+
+                            <p><label for="cor">Cor:</label>
+                                <input type="text" name="cor" id="cor" value="<?php echo htmlspecialchars($value['cor']); ?>">
+                            </p>
+
+                            <input type="hidden" name="codBicicleta" value="<?php echo htmlspecialchars($value['codBicicleta']); ?>">
+                            <p><input type="submit" name="editar" value="Editar"></p>
+
+                            <input type="hidden" id="codBicicleta" name="codBicicleta" value="<?php echo htmlspecialchars($value['codBicicleta']); ?>">
+                            <button id="botaoExcluir" type="submit" name="deletar">Deletar</button>
+                        </form>
+
+                    <?php } ?>
+                <?php } ?>
+            </div>
+
         </section>
     </main>
     <footer class="footer">
@@ -82,4 +106,5 @@ session_start();
         </div>
     </footer>
 </body>
+
 </html>

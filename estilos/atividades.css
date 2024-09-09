@@ -272,11 +272,12 @@ body {
     border: none;
     border-radius: 25px;
     padding: 0.75em 2em;
-    font-size: 0.9em;
+    font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 1em;
     display: inline-block;
+    margin-left: 42.5%;
     }
 
 .btn-editar:hover {

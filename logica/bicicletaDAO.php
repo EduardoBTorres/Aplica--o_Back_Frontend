@@ -24,10 +24,10 @@ class BicicletaDAO {
         return $stmt->execute();
     }
 
-    public function buscarBicicletaPorId($codUsuario) {
-        $sql = "SELECT * FROM bicicleta WHERE codBicicleta = :id";
+    public function buscarBicicletaPorId($codBicicleta) {
+        $sql = "SELECT * FROM bicicleta WHERE codBicicleta = :codBicicleta";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':codUsuario', $codUsuario, PDO::FETCH_ASSOC);
+        $stmt->bindParam(':codBicicleta', $codBicicleta, PDO::PARAM_INT);  // Corrigido
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($data) {
@@ -42,26 +42,31 @@ class BicicletaDAO {
         }
         return null;
     }
+    
 
     public function atualizarBicicleta(Bicicleta $bicicleta) {
-        $sql = "UPDATE bicicletas SET marca = :marca, modelo = :modelo, aro = :aro, cor = :cor WHERE cod_bicicleta = :cod_bicicleta";
+        $sql = "UPDATE bicicleta SET marca = :marca, modelo = :modelo, aro = :aro, cor = :cor WHERE codBicicleta = :codBicicleta";
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindParam(':marca', $bicicleta->getMarca());
         $stmt->bindParam(':modelo', $bicicleta->getModelo());
         $stmt->bindParam(':aro', $bicicleta->getAro());
         $stmt->bindParam(':cor', $bicicleta->getCor());
-        $stmt->bindParam(':cod_bicicleta', $bicicleta->getCodBicicleta(), PDO::PARAM_INT);
-
+        $stmt->bindParam(':codBicicleta', $bicicleta->getCodBicicleta(), PDO::PARAM_INT);
+    
         return $stmt->execute();
     }
+    
+    
 
-    public function deletarBicicleta($id) {
-        $sql = "DELETE FROM bicicletas WHERE cod_bicicleta = :id";
+    public function deletarBicicleta($codBicicleta) {
+        $sql = "DELETE FROM bicicleta WHERE codBicicleta = :codBicicleta";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
+        $stmt->bindParam(':codBicicleta', $codBicicleta, PDO::PARAM_INT);
+    
         return $stmt->execute();
     }
+    
+    
 
 
 public function buscarBicicletaPorUsuario($codUsuario) {

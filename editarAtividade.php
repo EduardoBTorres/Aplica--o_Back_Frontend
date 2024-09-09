@@ -1,18 +1,13 @@
 <?php
 session_start();
-require_once('logica/Atividades.php');
-require_once('logica/AtividadesDAO.php'); 
+require_once('logica/AtividadesDAO.php');
+require_once('logica/atividades.php');
 require_once('logica/Usuario.php');
 require_once('logica/UsuarioDAO.php');
 
-# Verifica se a atividade a ser editada foi informada
-$retorno = null; // Inicializa a variável $retorno
-if (isset($_GET['codAtividades'])) {
-    $codAtividades = $_GET['codAtividades']; // Obtém o código da atividade via GET
-    $atividadesDAO = new AtividadesDAO();
-    $retorno = $atividadesDAO->buscarAtividadePorId($codAtividades); // Busca a atividade pelo ID
-}
-
+$codUsuario = $_SESSION['codUsuario'];
+$atividadesDAO = new AtividadesDAO();
+$atividades = $atividadesDAO->listarAtividades($codUsuario);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -25,11 +20,12 @@ if (isset($_GET['codAtividades'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <script src="scripts/validacaoEdicao.js" defer></script>
 </head>
+
 <body>
-<header class="cabecalho">
+    <header class="cabecalho">
         <div class="logo">
             <img src="imagens/novologo.png" alt="Logo da Aplicação">
         </div>
@@ -45,39 +41,47 @@ if (isset($_GET['codAtividades'])) {
                 <input type="submit" class="btn-sair" name="sair" value="Sair">
             </form>
             <div class="user-info">
-            <span>Bem vindo <?php echo $_SESSION['nome']; ?></span>  
+                <span>Bem vindo <?php echo $_SESSION['nome']; ?></span>
             </div>
         </nav>
     </header>
 
     <main>
-    <section class="container-form">
-        <h3>Editar Atividade</h3>
-        <?php if ($retorno): ?>
-        <form action="logica/logica_atividades.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
-            <p><label for="titulo">Título: </label><input type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($retorno['titulo']); ?>"></p>
-            <p><label for="local">Local: </label><input type="text" name="local" id="local" value="<?php echo htmlspecialchars($retorno['local']); ?>"></p>
-            <p><label for="distancia">Distância: </label><input type="number" name="distancia" id="distancia" value="<?php echo htmlspecialchars($retorno['distancia']); ?>"></p>
-            <p><label for="tempo">Tempo: </label><input type="number" name="tempo" id="tempo" value="<?php echo htmlspecialchars($retorno['tempo']); ?>"></p>
-            <p><label for="data">Data:</label><input type="date" name="data" id="data" value="<?php echo htmlspecialchars($retorno['data']); ?>"></p>
-            <p><label for="descricao">Descrição:</label><input type="text" name="descricao" id="descricao" value="<?php echo htmlspecialchars($retorno['descricao']); ?>"></p>
-            <input type="hidden" name="codAtividades" value="<?php echo htmlspecialchars($retorno['codAtividades']); ?>">
-            <p><input type="submit" name="editar" value="Editar"></p>
-        </form>
-        <?php else: ?>
-            <p>Atividade não encontrada.</p>
-        <?php endif; ?>
-    </section>
+        <section class="container-form">
+            <h3>Editar Atividade</h3>
+            <div>
+                <?php
+                // Verifica se há atividades cadastradas
+                if (empty($atividades)) {
+                ?>
+                    <section>
+                        <p>Não há atividades cadastradas.</p>
+                    </section>
+                    <?php
+                } else {
+                    echo "<div class='grid-container'>";
+                    foreach ($atividades as $value) { // Usando $value diretamente para cada atividade
+                    ?>
+                        <form action="logica/logica_atividades.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+                            <p><label for="titulo">Título: </label><input type="text" name="titulo" id="titulo" value="<?php echo htmlspecialchars($value['titulo']); ?>"></p>
+                            <p><label for="local">Local: </label><input type="text" name="local" id="local" value="<?php echo htmlspecialchars($value['local']); ?>"></p>
+                            <p><label for="distancia">Distância: </label><input type="number" name="distancia" id="distancia" value="<?php echo htmlspecialchars($value['distancia']); ?>"></p>
+                            <p><label for="tempo">Tempo: </label><input type="number" name="tempo" id="tempo" value="<?php echo htmlspecialchars($value['tempo']); ?>"></p>
+                            <p><label for="data">Data:</label><input type="date" name="data" id="data" value="<?php echo htmlspecialchars($value['data']); ?>"></p>
+                            <p><label for="descricao">Descrição:</label><input type="text" name="descricao" id="descricao" value="<?php echo htmlspecialchars($value['descricao']); ?>"></p>
 
-    <?php if ($retorno): ?>
-    <section class="container-form">
-        <h3>Excluir Atividade</h3>
-        <form action="logica/logica_atividades.php" method="post" onsubmit="return confirma_excluir()">
-            <input type="hidden" name="codAtividades" value="<?php echo htmlspecialchars($retorno['codAtividades']); ?>">
-            <button type="submit" name="deletar">Deletar</button>
-        </form>
-    </section>
-    <?php endif; ?>
+                            <input type="hidden" name="codAtividades" value="<?php echo htmlspecialchars($value['codAtividades']); ?>">
+                            <p><input type="submit" name="editar" value="Editar"></p>
+                            <button type="submit" name="deletar">Deletar</button>
+
+                        </form>
+                <?php
+                    }
+                    echo "</div>";
+                }
+                ?>
+            </div>
+        </section>
     </main>
     <footer class="footer">
         <div class="links-footer">
@@ -93,4 +97,5 @@ if (isset($_GET['codAtividades'])) {
         </div>
     </footer>
 </body>
+
 </html>

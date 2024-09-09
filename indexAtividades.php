@@ -93,23 +93,16 @@ $atividades = $atividadesDAO->listarAtividades($codUsuario);
                                 <p>Tempo: <?php echo htmlspecialchars($value['tempo']); ?></p>
                                 <p>Data: <?php echo htmlspecialchars($value['data']); ?></p>
                                 <p>Descrição: <?php echo htmlspecialchars($value['descricao']); ?></p><br></br>
-                               
-                                <div >
-                                    <a class="linkeditar" href="editarAtividade.php">
-                                        <button class="btn-editar">Editar</button>
-                                    </a>
-                               
-                                
-                                    <a href="excluirAtividade.php">
-                                        <button class="btn-editar">Excluir</button>
-                                    </a>
-                                </div>
                             </div>
                         <?php } ?>
                 </div>
-            </div>
+                <div>
+                    <a class="linkeditar" href="editarAtividade.php">
+                        <button class="btn-editar">Editar Atividades</button>
+                    </a>
 
-            </div>
+
+                </div>
             </div>
         </section>
     <?php } ?>

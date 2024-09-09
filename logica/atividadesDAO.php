@@ -63,13 +63,11 @@ class AtividadesDAO {
         }
     }
 
-    function deletarAtividades($atividades) {
+      // Função para deletar atividades
+    public function deletarAtividades($codAtividades) {
         try {
-            $query = $this->conexao->prepare(" DELETE FROM atividades 
-                WHERE codAtividades = :codAtividades
-            ");
-
-            $resultado = $query->execute(['codAtividades' => $atividades->getCodAtividades()]);
+            $query = $this->conexao->prepare("DELETE FROM atividades WHERE codAtividades = :codAtividades");
+            $resultado = $query->execute(['codAtividades' => $codAtividades]);
             return $resultado;
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -81,12 +79,13 @@ class AtividadesDAO {
         try {
             $query = $this->conexao->prepare("SELECT * FROM atividades WHERE codAtividades = :codAtividades");
             $query->execute(['codAtividades' => $codAtividades]);
-            return $query->fetch(PDO::FETCH_ASSOC);
+            return $query->fetch(PDO::FETCH_ASSOC); // Correção do tipo de retorno
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return false;
         }
     }
+    
     
 
     function listarAtividades($codUsuario) {
