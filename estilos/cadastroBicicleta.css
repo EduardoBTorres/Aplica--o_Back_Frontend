@@ -8,15 +8,18 @@
 /* Estilização do corpo da página */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #121212;
     margin: 0;
+    background-image: url('../imagens/cadAtividades.jpg');
+    background-size: cover;
+    background-position: left;
 }
 
 /* Cabeçalho */
 .cabecalho {
     background-color: #000; 
     color: #fff;
-    padding: 0.625em 1.25em; 
+    padding: 0.625em 1.25em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +45,7 @@ body {
 }
 
 .navegacao li {
-    margin: 0 0.625em;
+    margin: 0 0.625em; 
 }
 
 .navegacao a {
@@ -78,20 +81,36 @@ body {
     background-color: #9dff57; 
 }
 
+/* Estilização da seção de conteúdo */
+.conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2em;
+}
+
+.imagem-banner {
+    background-image: url('../imagens/cadAtividades.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 40em; 
+    border-radius: 1em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+}
+
 /* Container do formulário */
 .container-form {
-    background-color: #fff;
-    border: 0.2em solid #b2ff59;
+    background-color: #1e1e1e; 
+    border: 0.2em solid #b2ff59; 
     border-radius: 1em;
-    margin: 2em auto;
     padding: 2em;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 40em;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
+    width: 45%; 
 }
 
 .container-form h3 {
-    color: #000;
+    color: #b2ff59; 
     font-size: 1.5em;
     margin-bottom: 1.5em;
     text-align: center;
@@ -105,23 +124,19 @@ body {
     display: block;
     margin-bottom: 0.5em;
     font-weight: bold;
-    color: #333;
+    color: #b2ff59; 
 }
 
 .container-form input[type="text"],
-.container-form input[type="email"],
-.container-form input[type="password"],
-.container-form input[type="file"],
-.container-form input[type="number"],
-.container-form input[type="date"] {
+.container-form input[type="number"] {
     width: 100%;
     padding: 0.8em;
     border: 0.1em solid #ccc;
     border-radius: 0.5em;
     box-sizing: border-box;
     font-size: 1em;
-    color: #333;
-    background-color: #f9f9f9;
+    color: #fff;
+    background-color: #333; 
 }
 
 .container-form input[type="submit"],
@@ -141,10 +156,7 @@ body {
     background-color: #9dff57;
 }
 
-#botaoExcluir {
-    margin-left: 40%;
-}
-
+/* Rodapé */
 .footer {
     background-color: #1f2914; 
     color: #fff;
@@ -159,7 +171,7 @@ body {
 .link-footer {
     color: #fff;
     text-decoration: none;
-    margin: 0 0.625em; 
+    margin: 0 0.625em;
 }
 
 .link-footer:hover {
@@ -175,25 +187,17 @@ body {
     margin: 0 0.3125em;
 }
 
+
 /* Responsividade */
 @media (max-width: 768px) {
-    .cabecalho {
+    .conteudo {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
-    .navegacao ul {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 1em;
-    }
-
-    .user-info {
-        margin-top: 1em;
-    }
-
+    .imagem-banner,
     .container-form {
         width: 90%;
-        padding: 1.5em;
+        margin-bottom: 1.5em;
     }
 }
