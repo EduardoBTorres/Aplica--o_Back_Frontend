@@ -55,7 +55,7 @@ class UsuarioDAO
         try {
             $query = $this->conexao->prepare("SELECT * from usuario where codUsuario=:codUsuario");
             if ($query->execute(['codUsuario' => $usuario->getcodUsuario()])) {
-                $usuario = $query->fetch(); //coloca os dados num array $usuario
+                $usuario = $query->fetch();
                 return $usuario;
             } else {
                 return false;
@@ -70,7 +70,7 @@ class UsuarioDAO
         try {
             $query = $this->conexao->prepare("SELECT * from usuario where email=:email and senha=:senha");
             if ($query->execute(['email' => $usuario->getemail(), 'senha' => $usuario->getsenha()])) {
-                $usuario = $query->fetch(); //coloca os dados num array $usuario
+                $usuario = $query->fetch(); 
                 if ($usuario) {
                     return $usuario;
                 } else {

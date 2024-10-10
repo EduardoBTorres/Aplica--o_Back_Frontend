@@ -72,7 +72,7 @@ if (isset($_POST['editar'])) {
 
 # DELETAR BICICLETA
 if (isset($_POST['deletar'])) {
-    $codBicicleta = $_POST['codBicicleta'];  // Correto, pegando do POST
+    $codBicicleta = $_POST['codBicicleta']; 
 
     $bicicletaDAO = new BicicletaDAO();
     if ($bicicletaDAO->deletarBicicleta($codBicicleta)) {

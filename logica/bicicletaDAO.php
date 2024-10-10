@@ -27,7 +27,7 @@ class BicicletaDAO {
     public function buscarBicicletaPorId($codBicicleta) {
         $sql = "SELECT * FROM bicicleta WHERE codBicicleta = :codBicicleta";
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindParam(':codBicicleta', $codBicicleta, PDO::PARAM_INT);  // Corrigido
+        $stmt->bindParam(':codBicicleta', $codBicicleta, PDO::PARAM_INT); 
         $stmt->execute();
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($data) {

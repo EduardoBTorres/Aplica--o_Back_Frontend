@@ -8,6 +8,7 @@ require_once('logica/atividades.php');
 require_once('logica/Usuario.php');
 require_once('logica/UsuarioDAO.php');
 
+
 $codUsuario = $_SESSION['codUsuario'];
 $atividadesDAO = new AtividadesDAO();
 $atividades = $atividadesDAO->listarAtividades($codUsuario);
