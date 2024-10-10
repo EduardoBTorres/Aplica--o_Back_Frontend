@@ -39,17 +39,10 @@ if (isset($_POST['cadastrar'])) {
 # EDITAR ATIVIDADES
 if (isset($_POST['editar'])) {
     $codAtividades = $_POST['codAtividades'];
-    
-    // Criando um novo objeto de Atividades
     $atividades = new Atividades();
     
-    // Atribuindo o valor do código da atividade ao objeto
     $atividades->setCodAtividades($codAtividades);
-
-    // Criando um novo objeto DAO
     $atividadesDAO = new AtividadesDAO();
-    
-    // Corrigindo a chamada da função, passando o código da atividade, e não o objeto
     $retorno = $atividadesDAO->buscarAtividadePorId($atividades->getCodAtividades());
 }
  
@@ -85,7 +78,7 @@ if (isset($_POST['editar'])) {
 
 # DELETAR ATIVIDADES
 if (isset($_POST['deletar'])) {
-    $codAtividades = $_POST['codAtividades'];  // Pegando o código da atividade
+    $codAtividades = $_POST['codAtividades']; 
 
     $AtividadesDAO = new AtividadesDAO();
     if ($AtividadesDAO->deletarAtividades($codAtividades)) {
@@ -96,6 +89,5 @@ if (isset($_POST['deletar'])) {
         echo "<script>alert('Erro ao deletar atividade');</script>";
     }
 }
-
 
 ?>

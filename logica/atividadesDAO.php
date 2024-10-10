@@ -63,7 +63,6 @@ class AtividadesDAO {
         }
     }
 
-      // Função para deletar atividades
     public function deletarAtividades($codAtividades) {
         try {
             $query = $this->conexao->prepare("DELETE FROM atividades WHERE codAtividades = :codAtividades");
@@ -79,7 +78,7 @@ class AtividadesDAO {
         try {
             $query = $this->conexao->prepare("SELECT * FROM atividades WHERE codAtividades = :codAtividades");
             $query->execute(['codAtividades' => $codAtividades]);
-            return $query->fetch(PDO::FETCH_ASSOC); // Correção do tipo de retorno
+            return $query->fetch(PDO::FETCH_ASSOC); 
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
             return false;
@@ -99,4 +98,6 @@ class AtividadesDAO {
         }
     }
 } 
+
+
 ?>

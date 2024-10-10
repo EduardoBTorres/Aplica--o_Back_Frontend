@@ -6,8 +6,8 @@ class Bicicleta
     private $marca;
     private $modelo;
     private $aro;
-    private $cor; // Adicionado para corresponder com o DAO
-    private $codUsuario; // Adicionado para corresponder com o DAO
+    private $cor; 
+    private $codUsuario; 
 
     public function setCodBicicleta($codBicicleta) {
         $this->codBicicleta = $codBicicleta;
